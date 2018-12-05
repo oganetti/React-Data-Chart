@@ -42,10 +42,12 @@
 
 .powerBI{
   margin: 0 auto;
-  width: 500px;
+  width: 1500px;
+  height: 900px;
   position: relative;
-  top: 150px;
-  margin: 0 auto;
+  top: 10px;
+  margin-left:350px;
+
 }
 
 

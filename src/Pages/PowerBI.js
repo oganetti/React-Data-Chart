@@ -9,18 +9,9 @@ class PowerBI extends Component {
 
     return (
       <div className="powerBI">
-        
-        <Alert bsStyle="info" >
-          <h4>INFO</h4>
-          <p>
-            It is not finished yet.
-          </p><br/>
-          <p>
-            <Button bsStyle="info" href='/'>Return</Button>
-          </p>
-        </Alert>
+  
+        <iframe width="100%" height="100%" src="https://oplog.com.tr/" frameborder="0" allowfullscreen></iframe>
     
- 
       </div>
     );
   }

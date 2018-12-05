@@ -40,11 +40,11 @@ class MenuBar extends Component {
 
  
               <Menu vertical>
-              <Dropdown item text={item.listName}>
+              <Dropdown item text={item.menuName}>
                 <Dropdown.Menu>
                 {result.map(item2 =>(
-                  item2.parentID === item.listID && 
-                  <Dropdown.Item href={'/' + item2.typeList}>{item2.listName}</Dropdown.Item>
+                  item2.parentID === item.menuID && 
+                  <Dropdown.Item href={'/' + item2.menuType}>{item2.menuName}</Dropdown.Item>
                 ))}
                 </Dropdown.Menu>
               </Dropdown>
