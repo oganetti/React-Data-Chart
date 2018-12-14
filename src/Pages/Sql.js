@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Table} from 'react-bootstrap';
+import {Table,Button} from 'react-bootstrap';
 
 
 class Sql extends Component {
@@ -8,7 +8,9 @@ class Sql extends Component {
   render() {
 
     return (
-      <div class="powerBI">
+      <div className="sqlPage">
+      <Button bsStyle="primary">Excel</Button>
+      <div className="sql">
         
         <Table striped condensed hover>
         <thead>
@@ -38,9 +40,11 @@ class Sql extends Component {
       <td>@twitter</td>
     </tr>
   </tbody>
-</Table>;
+</Table>
     
  
+      </div>
+
       </div>
     );
   }

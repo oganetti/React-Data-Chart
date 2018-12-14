@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import {Alert,Button} from 'react-bootstrap';
+import { connect } from 'react-redux';
+import Iframe from 'react-iframe';
 
 
 class PowerBI extends Component {
@@ -9,8 +10,8 @@ class PowerBI extends Component {
 
     return (
       <div className="powerBI">
-  
-        <iframe width="100%" height="100%" src="https://oplog.com.tr/" frameborder="0" allowfullscreen></iframe>
+
+        <iframe width="100%" height="100%" src={this.props.item.frameState} frameborder="0" allowfullscreen></iframe>
     
       </div>
     );
@@ -19,4 +20,11 @@ class PowerBI extends Component {
 
 }
 
-export default PowerBI;
+const mapStateToProps = (state) => {
+  return {
+    item: state
+  };
+};
+
+export default connect(mapStateToProps)(PowerBI);
+

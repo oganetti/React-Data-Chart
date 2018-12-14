@@ -9,6 +9,7 @@
     "react-bootstrap": "^0.32.4",
     "react-bootstrap-sidebar": "0.0.1",
     "react-dom": "^16.6.3",
+    "react-iframe": "^1.3.3",
     "react-metismenu": "^1.4.0",
     "react-redux": "^5.1.1",
     "react-router-dom": "^4.3.1",
