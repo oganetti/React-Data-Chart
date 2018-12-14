@@ -8,12 +8,6 @@ import Sql from './Pages/Sql';
 
 
 
-
-import { updateUser } from './Actions/update-user';
-import { connect } from 'react-redux';
-
-
-
 class App extends Component {
 
 
@@ -40,14 +34,6 @@ class App extends Component {
 
 }
 
-const mapStateToProps = state =>( {
-  products:state.products,
-  user: state.user
 
-});
 
-const mapActionsToProps = {
-  onUpdateUser: updateUser
-}
-
-export default connect(mapStateToProps,mapActionsToProps)(App);
+export default App;
