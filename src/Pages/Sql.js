@@ -1,11 +1,25 @@
 import React, { Component } from 'react';
 import {Table,Button} from 'react-bootstrap';
-
+import axios from 'axios';
+import { connect } from 'react-redux';
 
 class Sql extends Component {
 
 
+
   render() {
+
+
+    axios.post('http://localhost:50611/api/values', {
+      connectionString:this.props.item.connectionState,
+      name:this.props.item.frameState,
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 
     return (
       <div className="sqlPage">
@@ -52,4 +66,10 @@ class Sql extends Component {
 
 }
 
-export default Sql;
+const mapStateToProps = (state) => {
+  return {
+    item: state
+  };
+};
+
+export default connect(mapStateToProps)(Sql);

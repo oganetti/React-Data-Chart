@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Dropdown, Menu } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import { changeAction } from '../Actions/changeAction';
+import {connectionAction} from '../Actions/connectionAction';
 import store from '../Store';
 
 
@@ -44,7 +45,7 @@ class MenuBar extends Component {
  
               <Menu simple vertical >
               <Dropdown item simple text={item.menuName} onClick={() =>
-                    this.props.onClick(item.menuData)} href={'/' + item.menuType}>
+                    this.props.onClick(item.menuData,item.connectionString)} href={'/' + item.menuType}>
                 <Dropdown.Menu className="deneme">
                 {result.map(item2 =>(
                   item2.parentID === item.menuID && 
@@ -71,10 +72,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onClick: (id) => {
-      dispatch(changeAction(id))
-    },
-    onClick2:(id)=>{
+    onClick: (id,data) => {
+      dispatch(connectionAction(data))
       dispatch(changeAction(id))
     }
   }

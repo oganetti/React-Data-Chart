@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Iframe from 'react-iframe';
+import axios from 'axios';
 
 
 class PowerBI extends Component {
 
 
   render() {
+
 
     return (
       <div className="powerBI">

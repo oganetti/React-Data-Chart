@@ -1,5 +1,6 @@
 import { createStore, combineReducers } from 'redux';
 import frameReducer from '../Reducers/frameReducer';
+import connectionReducer from '../Reducers/connectionReducer';
 
 
 
@@ -27,6 +28,7 @@ function saveToLocalStorage(state){
   const rootReducer = combineReducers({
   
     frameState: frameReducer,
+    connectionState: connectionReducer
   
   });
   

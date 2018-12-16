@@ -7,10 +7,10 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import store from './Store';
 import 'semantic-ui-css/semantic.min.css';
+import axios from 'axios';
 
 
 
 serviceWorker.unregister();
 
 ReactDOM.render(<Provider store={store}><BrowserRouter><App /></BrowserRouter></Provider>, document.getElementById('root'));
-
