@@ -50,7 +50,7 @@ class MenuBar extends Component {
                 {result.map(item2 =>(
                   item2.parentID === item.menuID && 
                   <Dropdown.Item onClick={(e) => {e.stopPropagation(); 
-                    this.props.onClick(item2.menuData)}} href={'/' + item2.menuType} >{item2.menuName}</Dropdown.Item>
+                    this.props.onClick(item2.menuData,item2.connectionString)}} href={'/' + item2.menuType} >{item2.menuName}</Dropdown.Item>
                 ))}
                 </Dropdown.Menu>
               </Dropdown>

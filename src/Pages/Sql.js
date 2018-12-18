@@ -6,53 +6,84 @@ import { connect } from 'react-redux';
 class Sql extends Component {
 
 
+  constructor(props){
+    super(props);
+
+    this.state = {
+        resultcolums : [],
+        resultdata : []
+    }
+
+  }
+
+  componentWillMount(){
+
+    var self = this;
+
+    if(this.props.item.connectionState != null){
+
+      axios.post('http://localhost:50611/api/values', {
+        connectionString:this.props.item.connectionState,
+        name:this.props.item.frameState,
+      })
+      .then(function (response) {
+        self.setState({resultcolums:response.data.listacolumnas,resultdata:response.data.rows})
+        console.log(response)
+  
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
+  };
+
 
   render() {
 
 
-    axios.post('http://localhost:50611/api/values', {
-      connectionString:this.props.item.connectionState,
-      name:this.props.item.frameState,
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+
+
+  var {resultcolums,resultdata} =this.state;
+  var count=0;
+
+
+
 
     return (
       <div className="sqlPage">
-      <Button bsStyle="primary">Excel</Button>
-      <div className="sql">
+   
+
+  
+     <Button bsStyle="primary">Excel</Button>
+     <div className="sql">
         
         <Table striped condensed hover>
         <thead>
-    <tr>
-      <th>Example</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Username</th>
+        <tr>
+
+       {resultcolums.map(col =>(
+          <th>{col}</th>
+       ))}
+  
+
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>1</td>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td colSpan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
+
+            {resultdata.map((item) =>(
+              
+              count=0,
+              <tr>
+
+              {resultcolums.map((item2) =>(
+              <td>{item[count++]}</td>
+              ))}
+
+              </tr>
+              
+         ))}
+
+          
   </tbody>
 </Table>
     
