@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 import {Table,Button} from 'react-bootstrap';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import ReactExport from 'react-data-export';
+
+const ExcelFile = ReactExport.ExcelFile;
+const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
+const ExcelColumn = ReactExport.ExcelFile.ExcelColumn;
 
 class Sql extends Component {
 
@@ -11,7 +16,8 @@ class Sql extends Component {
 
     this.state = {
         resultcolums : [],
-        resultdata : []
+        resultdata : [],
+        resultExcel: {}
     }
 
   }
@@ -27,7 +33,7 @@ class Sql extends Component {
         name:this.props.item.frameState,
       })
       .then(function (response) {
-        self.setState({resultcolums:response.data.listacolumnas,resultdata:response.data.rows})
+        self.setState({resultcolums:response.data.listacolumnas,resultdata:response.data.rows,resultExcel:response.data.rows2})
         console.log(response)
   
       })
@@ -43,18 +49,31 @@ class Sql extends Component {
 
 
 
-  var {resultcolums,resultdata} =this.state;
+  var {resultcolums,resultdata,resultExcel} =this.state;
   var count=0;
-
-
 
 
     return (
       <div className="sqlPage">
-   
 
   
-     <Button bsStyle="primary">Excel</Button>
+  <ExcelFile element={<Button bsStyle="primary">Excel</Button>}>
+ 
+
+
+              <ExcelSheet data={resultExcel} name="Excel">
+
+              {resultcolums.map((item2) =>(
+
+              <ExcelColumn label={item2} value={item2}/>
+
+              ))}
+      
+        </ExcelSheet>
+
+
+ </ExcelFile>
+   
      <div className="sql">
         
         <Table striped condensed hover>
@@ -65,10 +84,9 @@ class Sql extends Component {
           <th>{col}</th>
        ))}
   
-
-    </tr>
-  </thead>
-  <tbody>
+        </tr>
+          </thead>
+            <tbody>
 
             {resultdata.map((item) =>(
               
@@ -82,14 +100,10 @@ class Sql extends Component {
               </tr>
               
          ))}
-
-          
+       
   </tbody>
 </Table>
-    
- 
       </div>
-
       </div>
     );
   }
