@@ -30,7 +30,7 @@ const TopBar = () =>{
           </NavItem>
           </Nav>
         </Navbar.Collapse>
-      </Navbar>;
+      </Navbar>
         </div>
     );
 }

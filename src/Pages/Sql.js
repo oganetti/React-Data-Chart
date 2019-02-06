@@ -76,7 +76,7 @@ class Sql extends Component {
    
      <div className="sql">
         
-        <Table striped condensed hover>
+     <Table responsive striped bordered hover variant="dark">
         <thead>
         <tr>
 

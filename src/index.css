@@ -8,9 +8,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
   list-style: none;
   font-family: 'Roboto', sans-serif;
+  background:#6BB8EC;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+
