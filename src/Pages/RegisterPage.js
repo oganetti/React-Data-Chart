@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-// import { userActions } from '../_actions';
+import { userActions } from '../Actions';
 
 class RegisterPage extends React.Component {
     constructor(props) {
@@ -23,26 +23,26 @@ class RegisterPage extends React.Component {
     }
 
     handleChange(event) {
-    //     const { name, value } = event.target;
-    //     const { user } = this.state;
-    //     this.setState({
-    //         user: {
-    //             ...user,
-    //             [name]: value
-    //         }
-    //     });
-    // }
-
+        const { name, value } = event.target;
+        const { user } = this.state;
+        this.setState({
+            user: {
+                ...user,
+                [name]: value
+            }
+        });
     }
-    handleSubmit(event) {
-        // event.preventDefault();
 
-        // this.setState({ submitted: true });
-        // const { user } = this.state;
-        // const { dispatch } = this.props;
-        // if (user.firstName && user.lastName && user.username && user.password) {
-        //     dispatch(userActions.register(user));
-        // }
+    
+    handleSubmit(event) {
+        event.preventDefault();
+
+        this.setState({ submitted: true });
+        const { user } = this.state;
+        const { dispatch } = this.props;
+        if (user.firstName && user.lastName && user.username && user.password) {
+            dispatch(userActions.register(user));
+        }
     }
 
     render() {
@@ -94,10 +94,10 @@ class RegisterPage extends React.Component {
 }
 
 function mapStateToProps(state) {
-    // const { registering } = state.registration;
-    // return {
-    //     registering
-    // };
+    const { registering } = state.registration;
+    return {
+        registering
+    };
 }
 
 export default connect(mapStateToProps)(RegisterPage);

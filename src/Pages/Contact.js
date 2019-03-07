@@ -12,9 +12,9 @@ class Contact extends Component {
       <div className="contact">
         <Panel bsStyle="primary">
     <Panel.Heading>
-      <Panel.Title componentClass="h3">Ogan Dragonetti</Panel.Title>
+      <Panel.Title componentClass="h3">Oplog</Panel.Title>
     </Panel.Heading>
-    <Panel.Body>Email: ogandragonetti@gmail.com</Panel.Body>
+    <Panel.Body>info@oplog.com.tr</Panel.Body>
   </Panel>
       </div>
     );

@@ -3,7 +3,7 @@ import { Dropdown, Menu } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import { changeAction } from '../Actions/changeAction';
 import {connectionAction} from '../Actions/connectionAction';
-import store from '../Store';
+import { store } from '../Helpers';
 
 
 
@@ -20,7 +20,7 @@ class MenuBar extends Component {
   }
 
   componentDidMount(){
-    fetch('http://localhost:50611/api/list')
+    fetch('http://localhost:4000/api/menu')
     .then(res => res.json())
     .then(json =>{
       this.setState({
@@ -29,13 +29,13 @@ class MenuBar extends Component {
     })
     .catch(error => console.log('parsing failed'))
 
-      
 
   }
 
   render() {
 
     var {result} = this.state;
+    console.log(this.state.result);
 
     return (
   <div className="sidebar">
@@ -45,12 +45,12 @@ class MenuBar extends Component {
  
               <Menu simple vertical >
               <Dropdown item simple text={item.menuName} onClick={() =>
-                    this.props.onClick(item.menuData,item.connectionString)} href={'/' + item.menuType}>
+                    this.props.onClick(item.menuData,item.connectionString)} href={'/home/' + item.menuType}>
                 <Dropdown.Menu className="deneme">
                 {result.map(item2 =>(
                   item2.parentID === item.menuID && 
                   <Dropdown.Item onClick={(e) => {e.stopPropagation(); 
-                    this.props.onClick(item2.menuData,item2.connectionString)}} href={'/' + item2.menuType} >{item2.menuName}</Dropdown.Item>
+                    this.props.onClick(item2.menuData,item2.connectionString)}} href={'/home/' + item2.menuType} >{item2.menuName}</Dropdown.Item>
                 ))}
                 </Dropdown.Menu>
               </Dropdown>
@@ -68,7 +68,6 @@ const mapStateToProps = state => ({
 
 
 });
-
 
 const mapDispatchToProps = (dispatch) => {
   return {

@@ -3,6 +3,10 @@ import {Table,Button} from 'react-bootstrap';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import ReactExport from 'react-data-export';
+import { authHeader } from '../Helpers';
+import TopBar from '../Components/top-bar';
+import MenuBar from '../Components/menu-bar';
+import BottomBar from '../Components/bottom-bar';
 
 const ExcelFile = ReactExport.ExcelFile;
 const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
@@ -28,9 +32,14 @@ class Sql extends Component {
 
     if(this.props.item.connectionState != null){
 
-      axios.post('http://localhost:50611/api/values', {
-        connectionString:this.props.item.connectionState,
-        name:this.props.item.frameState,
+      axios({
+        method: 'POST',
+        headers: {  ...authHeader() },
+        data: {
+          connectionString:this.props.item.connectionState,
+          name:this.props.item.frameState
+        },
+        url:"http://localhost:4000/api/values"
       })
       .then(function (response) {
         self.setState({resultcolums:response.data.listacolumnas,resultdata:response.data.rows,resultExcel:response.data.rows2})

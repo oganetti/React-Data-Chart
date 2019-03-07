@@ -2,7 +2,7 @@ const INITIAL_STATE = {
     payload:'',
   };
   
-  function frameReducer(state = INITIAL_STATE, action) {
+  export function frameReducer(state = INITIAL_STATE, action) {
     switch (action.type) {
       case 'CHANGE_SET':
         return action.payload;
@@ -12,5 +12,3 @@ const INITIAL_STATE = {
     }
   }
 
-  
-  export default frameReducer;

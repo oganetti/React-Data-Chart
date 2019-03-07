@@ -2,7 +2,7 @@ const INITIAL_STATE = {
     payload:'Deneme',
   };
   
-  function connectionReducer(state = INITIAL_STATE, action) {
+  export function connectionReducer(state = INITIAL_STATE, action) {
     switch (action.type) {
       case 'CHANGE_CONNECTION':
         return action.payload;
@@ -13,4 +13,3 @@ const INITIAL_STATE = {
   }
 
   
-  export default connectionReducer;

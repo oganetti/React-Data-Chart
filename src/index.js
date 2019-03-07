@@ -5,7 +5,7 @@ import {Provider} from 'react-redux';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import store from './Store';
+import { store } from './Helpers';
 import 'semantic-ui-css/semantic.min.css';
 import axios from 'axios';
 

@@ -22,8 +22,8 @@ const TopBar = () =>{
             </NavItem>
             </Nav>
           <Nav pullRight>
-          <NavItem eventKey={1} href="#">
-            Help
+          <NavItem eventKey={1} href="/login">
+            Log Out
           </NavItem>
           <NavItem eventKey={2} href="/contact">
             Contact

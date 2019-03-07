@@ -1,8 +1,11 @@
-import { createStore, combineReducers } from 'redux';
-import frameReducer from '../Reducers/frameReducer';
-import connectionReducer from '../Reducers/connectionReducer';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import rootReducer from '../Reducers';
+import thunkMiddleware from 'redux-thunk';
+import { createLogger } from 'redux-logger';
 
 
+
+const loggerMiddleware = createLogger();
 
 function saveToLocalStorage(state){
     try{
@@ -25,19 +28,15 @@ function saveToLocalStorage(state){
   }
   
   
-  const rootReducer = combineReducers({
-  
-    frameState: frameReducer,
-    connectionState: connectionReducer
-  
-  });
   
 const persistedState = loadFromLocalStorage();
 
 
-const store = createStore(rootReducer,persistedState,window.devToolsExtension && window.devToolsExtension());
+export const store = createStore(rootReducer,persistedState,applyMiddleware(
+  thunkMiddleware,
+  loggerMiddleware
+));
 
   
 store.subscribe(() => saveToLocalStorage(store.getState()))
 
-export default store;
