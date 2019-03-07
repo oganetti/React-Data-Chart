@@ -4,7 +4,7 @@ import {Navbar,Nav,NavItem} from 'react-bootstrap';
 
 
 
-const TopBar = () =>{
+export const TopBar = () =>{
   
     return(
         <div className='topDiv'>
@@ -25,7 +25,7 @@ const TopBar = () =>{
           <NavItem eventKey={1} href="/login">
             Log Out
           </NavItem>
-          <NavItem eventKey={2} href="/contact">
+          <NavItem eventKey={2} href="/home/contact">
             Contact
           </NavItem>
           </Nav>
@@ -34,5 +34,3 @@ const TopBar = () =>{
         </div>
     );
 }
-
-export default TopBar;

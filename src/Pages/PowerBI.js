@@ -1,25 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Iframe from 'react-iframe';
-import axios from 'axios';
+
 
 
 class PowerBI extends Component {
 
 
   render() {
-
-
     return (
       <div className="powerBI">
-
         <iframe width="100%" height="100%" src={this.props.item.frameState} frameborder="0" allowfullscreen></iframe>
-    
       </div>
     );
   }
-
-
 }
 
 const mapStateToProps = (state) => {
@@ -28,5 +21,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(PowerBI);
+const connectedPowerBI = connect(mapStateToProps)(PowerBI);
+export { connectedPowerBI as PowerBI }; 
 
