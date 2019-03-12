@@ -3,6 +3,7 @@ import { Dropdown, Menu } from 'semantic-ui-react'
 import { connect } from 'react-redux';
 import { changeAction, connectionAction } from '../Actions';
 import { store } from '../Helpers';
+import { authHeader } from '../Helpers';
 
 
 
@@ -17,8 +18,16 @@ class MenuBar extends Component {
     }
   }
 
-  componentDidMount() {
-    fetch('http://localhost:4000/api/menu')
+  
+
+  componentWillMount() {
+    fetch('http://localhost:4000/api/menu',{
+      method: "GET",
+      headers:{
+        ...authHeader()
+      }
+    }
+    )
       .then(res => res.json())
       .then(json => {
         this.setState({
@@ -33,6 +42,8 @@ class MenuBar extends Component {
 
     var { result } = this.state;
     console.log(this.state.result);
+
+    
 
     return (
       <div className="sidebar">

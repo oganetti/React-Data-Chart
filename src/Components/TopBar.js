@@ -1,6 +1,7 @@
 import React from 'react';
 import  logo from '../Images/oplog.png';
 import {Navbar,Nav,NavItem} from 'react-bootstrap';
+import { Icon } from 'semantic-ui-react'
 
 
 
@@ -18,15 +19,18 @@ export const TopBar = () =>{
               <img src={logo} height="30"/>
             </NavItem>
             <NavItem eventKey={1} href="/" >
-              Home
+              Ana Menü&nbsp;&nbsp;
+              <Icon name='home'></Icon>
             </NavItem>
             </Nav>
           <Nav pullRight>
-          <NavItem eventKey={1} href="/login">
-            Log Out
-          </NavItem>
           <NavItem eventKey={2} href="/home/contact">
-            Contact
+            İletişim&nbsp;&nbsp;
+            <Icon name='envelope'></Icon>
+          </NavItem>
+          <NavItem eventKey={1} href="/login">
+            Çıkış&nbsp;&nbsp;
+            <Icon name='logout'></Icon>
           </NavItem>
           </Nav>
         </Navbar.Collapse>
