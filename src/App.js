@@ -6,6 +6,10 @@ import { PrivateRoute } from './Components';
 import { history } from './Helpers';
 import Background from './Images/background.jpg';
 
+
+
+
+
 var sectionStyle = {
   backgroundImage: `url(${Background})`
 };
@@ -20,6 +24,7 @@ class App extends Component {
             <PrivateRoute exact path="/" component={Home} />
             <PrivateRoute path="/home" component={Home} />
             <Route path="/login" component={LoginPage} />
+            <Route path="/register" component={RegisterPage}/>
           </div>
         </Router>
       </div>

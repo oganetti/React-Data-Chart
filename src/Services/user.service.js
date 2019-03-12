@@ -1,4 +1,5 @@
 import { authHeader } from '../Helpers';
+import { url } from '.';
 
 export const userService = {
     login,
@@ -17,7 +18,7 @@ function login(username, password) {
         body: JSON.stringify({ username, password })
     };
 
-    return fetch(`http://localhost:4000/users/authenticate`, requestOptions)
+    return fetch(`${url}/users/authenticate`, requestOptions)
         .then(handleResponse)
         .then(user => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -38,7 +39,7 @@ function getAll() {
         headers: authHeader()
     };
 
-    return fetch(`http://localhost:4000/users`, requestOptions).then(handleResponse);
+    return fetch(`${url}/users`, requestOptions).then(handleResponse);
 }
 
 function getById(id) {
@@ -47,7 +48,7 @@ function getById(id) {
         headers: authHeader()
     };
 
-    return fetch(`http://localhost:4000/users/${id}`, requestOptions).then(handleResponse);
+    return fetch(`${url}/users/${id}`, requestOptions).then(handleResponse);
 }
 
 function register(user) {
@@ -57,7 +58,7 @@ function register(user) {
         body: JSON.stringify(user)
     };
 
-    return fetch(`http://localhost:4000/users/register`, requestOptions).then(handleResponse);
+    return fetch(`${url}/users/register`, requestOptions).then(handleResponse);
 }
 
 function update(user) {
@@ -67,7 +68,7 @@ function update(user) {
         body: JSON.stringify(user)
     };
 
-    return fetch(`http://localhost:4000/users/${user.id}`, requestOptions).then(handleResponse);;
+    return fetch(`${url}/users/${user.id}`, requestOptions).then(handleResponse);;
 }
 
 // prefixed function name with underscore because delete is a reserved word in javascript
@@ -77,7 +78,7 @@ function _delete(id) {
         headers: authHeader()
     };
 
-    return fetch(`http://localhost:4000/users/${id}`, requestOptions).then(handleResponse);
+    return fetch(`${url}/users/${id}`, requestOptions).then(handleResponse);
 }
 
 function handleResponse(response) {

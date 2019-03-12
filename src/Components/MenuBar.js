@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { changeAction, connectionAction } from '../Actions';
 import { store } from '../Helpers';
 import { authHeader } from '../Helpers';
+import { url } from '../Services';
+
 
 
 
@@ -21,7 +23,7 @@ class MenuBar extends Component {
   
 
   componentWillMount() {
-    fetch('http://localhost:4000/api/menu',{
+    fetch(`${url}/api/menu`,{
       method: "GET",
       headers:{
         ...authHeader()

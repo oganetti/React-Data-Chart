@@ -4,6 +4,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import ReactExport from 'react-data-export';
 import { authHeader } from '../Helpers';
+import { url } from '../Services';
 
 const ExcelFile = ReactExport.ExcelFile;
 const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
@@ -36,7 +37,7 @@ class Sql extends Component {
           connectionString: this.props.item.connectionState,
           name: this.props.item.frameState
         },
-        url: "http://localhost:4000/api/values"
+        url: `${url}/api/values`
       })
         .then(function (response) {
           self.setState({ resultcolums: response.data.listacolumnas, resultdata: response.data.rows, resultExcel: response.data.rows2 })
